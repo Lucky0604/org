@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       d2aa15ab-9dc2-4488-b383-c19981e7ab0d
+:END:
+#+title: Sliding window
+

@@ -1,0 +1,67 @@
+* TODO Shanbei English words learning                                :learning:
+SCHEDULED: <2021-08-05 Thu 14:00 +1d>
+:PROPERTIES:
+:LAST_REPEAT: [2021-08-04 Wed 14:13]
+:END:
+- State "DONE"       from "DOING"      [2021-08-04 Wed 14:13]
+- State "DONE"       from "TODO"       [2021-08-03 Tue 22:44]
+:LOGBOOK:
+CLOCK: [2021-08-04 Wed 14:02]--[2021-08-04 Wed 14:13] =>  0:11
+CLOCK: [2021-08-03 Tue 09:58]--[2021-08-03 Tue 09:58] =>  0:00
+:END:
+[2021-08-03 Tue 09:58]
+* TODO Finish 1 Leetcode problem                                     :learning:
+SCHEDULED: <2021-08-05 Thu 10:30 +1d>
+:PROPERTIES:
+:LAST_REPEAT: [2021-08-04 Wed 11:13]
+:END:
+- State "DONE"       from "DOING"      [2021-08-04 Wed 11:13]
+- State "DONE"       from "TODO"       [2021-08-03 Tue 12:36]
+:LOGBOOK:
+CLOCK: [2021-08-04 Wed 11:09]--[2021-08-04 Wed 11:13] =>  0:04
+CLOCK: [2021-08-03 Tue 10:14]--[2021-08-03 Tue 10:15] =>  0:01
+:END:
+[2021-08-03 Tue 10:14]
+* TODO [[id:cb6871f7-e947-4c60-a04e-244ccaf8b59b][Java Interview Questions]]                                      :learning:
+SCHEDULED: <2021-08-05 Thu 12:00 +1d>
+:PROPERTIES:
+:LAST_REPEAT: [2021-08-04 Wed 12:10]
+:END:
+- State "DONE"       from "DOING"      [2021-08-04 Wed 12:10]
+- State "DONE"       from "DOING"      [2021-08-03 Tue 11:07]
+:LOGBOOK:
+CLOCK: [2021-08-04 Wed 11:47]--[2021-08-04 Wed 12:10] =>  0:23
+CLOCK: [2021-08-04 Wed 11:14]
+CLOCK: [2021-08-03 Tue 10:56]--[2021-08-03 Tue 11:07] =>  0:11
+CLOCK: [2021-08-03 Tue 10:17]
+:END:
+[2021-08-03 Tue 10:17]
+* DONE Change all leetcode notes into org-mode                         :normal:
+CLOSED: [2021-08-03 Tue 12:35] SCHEDULED: <2021-08-03 Tue>
+:LOGBOOK:
+CLOCK: [2021-08-03 Tue 11:59]--[2021-08-03 Tue 12:24] =>  0:25
+CLOCK: [2021-08-03 Tue 11:25]--[2021-08-03 Tue 11:25] =>  0:00
+CLOCK: [2021-08-03 Tue 11:24]--[2021-08-03 Tue 11:24] =>  0:00
+CLOCK: [2021-08-03 Tue 11:23]--[2021-08-03 Tue 11:23] =>  0:00
+:END:
+[2021-08-03 Tue 11:22]
+[[file:~/org/RoamNotes/20210803025017-leetcode.org::+title: Leetcode]]
+* TODO Add record number to personal website: fastdata.top
+SCHEDULED: <2021-08-04 Wed 14:30>
+:LOGBOOK:
+CLOCK: [2021-08-04 Wed 12:18]--[2021-08-04 Wed 12:19] =>  0:01
+:END:
+[2021-08-04 Wed 12:18]
+* TODO Reading Hadoop definition guide
+SCHEDULED: <2021-08-05 Thu 12:00 +1d>
+:PROPERTIES:
+:LAST_REPEAT: [2021-08-04 Wed 14:02]
+:END:
+- State "DONE"       from "DOING"      [2021-08-04 Wed 14:02]
+:LOGBOOK:
+CLOCK: [2021-08-04 Wed 13:00]--[2021-08-04 Wed 13:25] =>  0:25
+CLOCK: [2021-08-04 Wed 12:30]--[2021-08-04 Wed 12:55] =>  0:25
+CLOCK: [2021-08-04 Wed 12:29]--[2021-08-04 Wed 12:29] =>  0:00
+:END:
+[2021-08-04 Wed 12:28]
+

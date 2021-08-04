@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       cb6871f7-e947-4c60-a04e-244ccaf8b59b
+:END:
+#+title: Java Interview Questions
+
+* [[id:2484c229-f076-4ae6-b22c-83f3eb149aa1][基礎知識]]
+** [[id:de4e3887-e03b-4fa8-aa04-d200db288329][常見關鍵字總結]]
+** [[id:AE4D9808-E32B-4575-AB59-06439AA1EFCA][基础知识疑难点]]
+** [[id:AC528E06-08E4-4448-A6E1-56812688D18C][IO模型]]
+*** [[id:222ACCA7-9F35-4E4E-A612-7D6F9A3D7C54][BIO, NIO, AIO总结]]
+** [[id:CD6B070C-173B-4D39-9BDD-892FFEB74340][代理模式详解]]
+** [[id:5AFF1FD5-8A1A-47E9-A00F-1D4CAAC50A78][反射机制]]
+* [[id:2D6BAACF-E994-4B30-8324-0D5E6CA71F9C][Collections]]

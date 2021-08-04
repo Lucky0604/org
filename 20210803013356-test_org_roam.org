@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       48f5f09e-dea6-45a4-931f-7f5cbdd45fd2
+:END:
+#+title: Test org-roam
+
+* first test org-roam

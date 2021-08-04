@@ -1,0 +1,370 @@
+:PROPERTIES:
+:ID:       5bfdedcd-d1e3-42b4-b665-096b96435d47
+:END:
+#+title: Leetcode
+** [[https://leetcode.com/problems/add-binary/][Leetcode 67: Add Binary]]                                        :easy:string:
+*** 解题关键：
+理解题意，是将两个字符串的二进制数转化成十进制，相加后再转化为二进制数
+需要注意当a, b的二进制非常长的时候，会超出默认类型的长度(int, Integer)，因此考虑使用 `BigInteger` 类型，或者手写二进制转十进制
+		#+BEGIN_SRC java
+		StringBuilder ret = new StringBuilder();
+		// index starts from the end
+		int aIndex = a.length() - 1;
+		int bIndex = b.length() - 1;
+		int carry = 0;
+		while (aIndex >= 0 || bIndex >= 0) {
+		    int sum = 0;
+		    if (aIndex >= 0) {
+		        // change char to int
+		        sum += a.charAt(aIndex) - '0';
+		        aIndex --;
+		    }
+		    // the same to string b
+		    if (bIndex >= 0) {
+		        sum += b.charAt(bIndex) - '0';
+		        bIndex --;
+		    }
+		    sum += carry;
+		    ret.append(sum % 2);
+		    carry = sum / 2;
+		}
+		if (carry > 0) {
+		    ret.append(carry);
+		}
+		return ret.reverse().toString();
+		#+END_SRC
+** [[https://leetcode.com/problems/string-compression/][Leetcode 443: String Compression]] :medium:string:
+*** 解题关键
+本题使用滑动窗口算法解决
+1，corner case判断，若长度为1，直接返回，因为长度为1的字符后面数字不用添加
+			#+BEGIN_SRC java
+			int length = chars.length;
+			if (length == 1) {
+			    return length;
+			}
+			#+END_SRC
+2，定义窗口的左右边界
+			#+BEGIN_SRC java
+			int left = 0;
+			int right = 0;
+			// i为遍历索引，便于in-place change，结合题意需要constant extra space
+			int i = 0;
+			#+END_SRC
+3，核心逻辑
+			#+BEGIN_SRC java
+			// 以窗口右边界为基准
+			while (right < length) {
+			    // 定义一个计数器，保存每个字符的数量
+			    int count = 0;
+			    // 存储每个窗口的字符
+			    char c = chars[left];
+			    while (right < length && chars[right] == c) {
+			        // 基于窗口右边界进行遍历，计算窗口范围
+			        count ++;
+			        right ++;
+			    }
+						  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  
+			    // in-place change
+			    chars[i] = c;
+			    // i索引加1，即字符的后一位为计数值
+			    i ++;
+						  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  
+			    // 若count大于1，则需要在字符后添加数字
+			    if (count > 1) {
+			        // 若计数大于两位数，用for循环将数字转为char array，然后依次更换chars中的位置，同时i递增
+			        for (char character: Integer.toString(count).toCharArray()) {
+			            chars[i] = character;
+			            i ++;
+			        }
+			    }
+			    // 当right遍历到下一个字符时，此时将窗口左边界更新，重新开启一个新窗口计算下一组字符
+			    left = right;
+			}
+			// 返回最后的i
+			return i;
+			#+END_SRC
+	[[id:d2aa15ab-9dc2-4488-b383-c19981e7ab0d][Sliding window]]
+** [[https://leetcode.com/problems/custom-sort-string/][Leetcode 791: Custom Sort String]]               :medium:string:counting_sort:
+*** 解题思路
+根据题意，因为待排序的的字符长度最大为200，而元素范围是26个英文字母，基于该特性可以使用计数排序算法
+		#+BEGIN_SRC java
+		// 创建一个长度为26的数组存储排序字符计数
+		int[] tmp = new int[26];
+		for (char c: str.toCharArray()) {
+		    // 根据char - 'a'获得在tmp数组中的索引位置，同时计数
+		    tmp[c - 'a'] ++;
+		}
+				  		  		  		  		  		  		  		  		  		  		  		  		  		  		  
+		```
+		由于排序规则是根据给定的字符来指定，因此基于排序规则的字符在tmp数组中找到对应位置，并计算该字符数量进行递减
+		``` java
+		for (char c: order.toCharArray()) {
+		    while (tmp[c - 'a'] > 0) {
+		        sb.append(c);
+		    }
+		}
+		```
+		其余字符根据字母顺序排序插入StringBuilder即可
+		``` java
+		for (int i = 0; i < 26; i ++) {
+		    while (tmp[i] -- > 0) {
+		        sb.append((char) (i + 'a'));
+		    }
+		}
+		#+END_SRC
+	[[id:1cd6ea9c-7f54-4ca1-859f-2aa746885d5c][Counting Sort]]
+** [[https://leetcode.com/problems/sorting-the-sentence/][Leetcode 1859: Sorting the Sentence]] :easy:string:sort:
+*** 解题思路：
+根据题意描述，两个主要的信息
+字符串中每个单词之间只包含一个空格
+每个单词中的数字范围是1-9
+因此可以使用 `split()` 方法提取每一个单词，使用 `substring(0, str.length() - 1)` 提取单词
+提取数字的方法可以使用 `(int) (str.charAt(str.length() - 1)) - '0')` 方式
+		#+BEGIN_SRC java
+		String[] sArr = s.split(" ");
+		String[] tmp = new String[sArr.length];
+		// 外部定义索引
+		int index = 0;
+		for (String str: sArr) {
+		  index = (int) (str.charAt(str.length() - 1) - '0');
+		  tmp[index - 1] = str.substring(0, str.length() - 1);
+		}
+				  
+		StringBuilder sb = new StringBuilder();
+		// 重新为索引赋值，同时只遍历到倒数第二个单词，因为单词之间要插入空格
+		for (index = 0; index < tmp.length - 1; index ++) {
+		  sb.append(tmp[index]).append(" ");
+		}
+		sb.append(tmp[index]);
+		return sb.toString();
+		#+END_SRC
+** [[https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/][Leetcode 1877: Minimize Maximum Pair Sum in Array]] :medium:two_pointers:sort:
+*** 解题思路：
+根据题意描述，整理主要信息
+数组长度一定为偶数长度，即数组中所有元素都能形成pair
+最大的pair sum一定是最小化的，例如
+[1,2,3,4]，若pairs为(1,2)，(3,4)，那么其中pair为(3,4)的一定会大于pair为(2,3)或(1,4)，而当pairs为(1,3)，(2,4)时，(2,4)的和同样大于pair为(2,3)或(1,4)，因此最小化的pairs应为(1,4)，(2,3)
+根据主要信息，我们可以知道最小化pair应该满足规则，即数组中最小值与最大值pair，进而第二小的值与第二大的值pair，以此类推，因此可以使用双指针算法，遍历排序数组，然后返回满足条件的pair和的最大值
+#+BEGIN_SRC java
+		// 首先将数组排序
+		Arrays.sort(nums);
+		// 初始化返回值及双指针索引
+		int ret = 0;
+		int i = 0;
+		int j = nums.length - 1;
+		// while遍历
+		while (i <= j && i < nums.length && j >= 0) {
+		    // 返回值每次更新为pair的最大值
+		    ret = Math.max(ret, nums[i] + nums[j]);
+		    i ++;
+		    j --;
+		}
+		return ret;
+#+END_SRC
+** [[https://leetcode.com/problems/maximum-ice-cream-bars/][Leetcode 1833: Maximum Ice Cream Bars]] :medium:sort:counting_sort:
+*** 解题思路：
+为了巩固对计数排序的理解，此题用计数排序的方式来做
+根据题意描述，整理主要信息
+数组长度为 $$1 <= n <= 10^5$$
+元素大小范围为 $$1<= costs[i] <= 10^5$$
+因此使用int类型是可以满足，不需要考虑使用其他引用类型
+		#+BEGIN_SRC java
+		// 初始化一个计数的数组，长度超过数组的最大范围
+		int[] counter = new int[100001];
+		int length = costs.length;
+		// 将costs中的值对应索引位置存储在counter数组中
+		for (int i = 0; i < length; i ++) {
+		    counter[costs[i]] ++;
+		}
+		int ret = 0;
+		for (int i = 0; i < 100001; i ++) {
+		    // 此处只用判断在counter数组中大于0的情况，说明是有ice bar的cost
+		    if (counter[i] > 0) {
+		        // 考虑到有可能coins会一个都购买不了，此时coins / i为0
+		        int used = Math.min(coins / i, counter[i]);
+		        coins -= used * i;
+		        ret += used;
+		    }
+		}
+		return ret;
+		#+END_SRC
+** [[https://leetcode.com/problems/binary-watch/][Leetcode 401: Binary Watch]] :easy:backtracking:
+*** 解题思路：
++ 此题关键点在于理解题意
+  - 代表小时的一列有4个灯，分别是[1, 2, 4, 8]，表示0~11区间(因为小时最大是11，到12即为0点)
+	- 代表分钟的一列有6个灯，分别是[1, 2, 4, 8, 16, 32], 表示0~59区间(分钟最大显示是59，到60为0)
+  - 小时位不允许开头为0，例如"01:00"是不合法的，应为"1:00"
+	- 分钟为必须为2位数，可以包含开头为0，例如"1:2"是不合法的，应为"1:02"
+	- 要找出指定灯数下所有可能出现的情况，可以使用回溯算法解决，比暴力解法效率要高，因为可能出现的情况较多
+	- 定义一个数组，初始化将小时范围和分钟范围的值全部放入
+			#+BEGIN_SRC java
+			int[] arr = {1,2,4,8,1,2,4,8,16,32};
+			```
+			在backtracking的过程中我们需要知道在某个位置，当前值是小时还是分钟，因此我们定义一个方法判断是小时还是分钟
+			``` java
+			private boolean isHour(int pos) {
+			    return pos >= 0 && pos <= 3;
+			}
+			#+END_SRC
+	  定义backtracking方法，使用标准backtracking模板
+			#+BEGIN_SRC java
+			/** 
+			arr: 需要遍历的数组
+			pos: 数组的索引
+			hour: 当前小时的值
+			minute: 当前分钟的值
+			led: 当前led数
+			ret: 当前的所有可能的时间列表
+			**/
+			private void backtracking(int[] arr, int pos, int hour, int minute, int led, List<String> ret) {
+			    // 递归终止条件: 当led为0时，将当前小时和分钟写入列表
+			    if (led == 0) {
+			        // 根据上面的说明，小时最大显示11，分钟最大显示59
+			        if (hour <= 11 && minute <= 59) {
+			            StringBuilder sb = new StringBuilder();
+			            // 分钟的处理
+			            sb.append(hour).append(":").append(minute <= 9 : "0" + minute : minute);
+			            ret.add(sb.toString());
+			        }
+			        return;
+			    }
+						  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  
+			    // 开始遍历
+			    for (int i = pos; i < arr.length; i ++) {
+			        // 若是小时则小时叠加当前值
+			        if (isHour(i)) {
+			            hour += arr[i];
+			        } else {
+			            minute += arr[i];
+			        }
+						  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  
+			        // 递归pos + 1，led则-1
+			        backtracking(arr, pos + 1, hour, minute, led - 1, ret);
+						  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  
+			        // 移除叠加
+			        if (isHour(i)) {
+			            hour -= arr[i];
+			        } else {
+			            minute -= arr[i];
+			        }
+			    }
+			}
+			#+END_SRC
+	  在主方法中初始化调用backtracking
+			#+BEGIN_SRC java
+			// 初始化索引pos为0，小时为0，分钟为0
+			backtracking(arr, 0, 0, 0, led, ret);
+			#+END_SRC
+** [[https://leetcode.com/problems/combinations/][Leetcode 77: Combinations]] :medium:backtracking:
+*** 解题思路：
++ 根据题意获取关键信息
+  - 子数组长度为k
+	- 子数组中最大值不超过n
+  - 无需考虑排序，找到所有可能的子集
+	- 使用backtracking来穷举
+	  定义一个数组缓存所有可能的子集，这里可以在全局定义，便于回溯时更新子集元素，无需每次都创建新的子集数组
+		#+BEGIN_SRC java
+		private int[] tmp;
+		#+END_SRC
+	  定义backtracking方法，考虑所需要的参数
+	  最后的返回集合(List<List<String>> ret)
+	  子数组长度(int k)
+	  数组最大值(int n)
+	  索引值(int index)
+			#+BEGIN_SRC java
+			private void backtracking(List<List<String>> ret, int n, int index, int k) {
+			    // 递归终止条件
+			    // 当index到k + 1位置时结束递归，开始将当前tmp数组转化为list并插入返回的集合
+			    if (index == k + 1) {
+			        List<Integer> subList = new ArrayList<>();
+			        for (int i: tmp) {
+			            subList.add(i);
+			        }
+			        ret.add(subList);
+			        return;
+			    }
+						  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  
+			    // 定义当前索引值
+			    int curr = (index == 1) ? 1: tmp[index - 2] + 1;
+			    // 开始遍历
+			    for (int i = curr; i <= n; i ++) {
+			        tmp[index - 1] = i;
+			        backtracking(ret, n, index + 1, k);
+			    }
+			}
+			#+END_SRC
+		最后在主方法中调用，然后返回ret集合即可
+		#+BEGIN_SRC java
+		tmp = new int[k];
+		List<List<Integer>> ret = new ArrayList<>();
+		backtracking(ret, n, 1, k);
+		return ret;
+		#+END_SRC
+** [[https://leetcode.com/problems/permutations/][Leetcode 46: Permutations]] :medium:backtracking:
+*** 解题思路
+全排列是比较经典的回溯算法题，穷举出集合中任意的可能排列项
+			#+BEGIN_SRC java
+			// 主函数中我们初始化backtracking方法中的参数
+			// 选择链表结构，便于在递归过程中移除节点，更新操作
+			LinkedList<Integer> tmp = new LinkedList<>();
+			backtracking(nums, tmp);
+			```
+			开始进行backtracking递归
+			``` java
+			private void backtracking(int[] nums, LinkedList<Integer> tmp) {
+			    // 递归结束条件
+			    // 当tmp的大小等于nums数组长度，说明元素都已经在tmp中填充完毕，此时将tmp添加到返回列表中
+			    if (tmp.size == nums.length) {
+			        ret.add(new LinkedList(tmp));
+			        return;
+			    }
+						  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  
+			    for (int i = 0; i < nums.length; i ++) {
+			        // 若tmp中包含nums[i]，则跳过往下执行
+			        if (tmp.contains(nums[i])) continue;
+						  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  			  
+			        // 将元素添加到tmp中
+			        tmp.add(nums[i]);
+			        backtracking(nums, tmp);
+			        tmp.removeLast();
+			        
+			    }
+			}
+			#+END_SRC
+** HANGUP [[https://leetcode.com/problems/number-of-enclaves/][Leetcode 1020: Number of Enclaves]]                   :medium:dfs_bfs:
+** HANGUP [[*https://leetcode.com/problems/all-possible-full-binary-trees/][Leetcode 894: All Possible Full Binary Trees]] :medium:dp:binary_tree:
+** HANGUP [[https://leetcode.com/problems/number-of-islands/][Leetcode 200: Number of Islands]]                  :medium:union_find:
+** HANGUP [[https://leetcode.com/problems/shuffle-an-array/][Leetcode 384: Shuffle an Array]]         :medium:fisher_yates_shuffle:
+** HANGUP [[https://leetcode.com/problems/count-sub-islands/][Leetcode 1095: Count Sub Islands]]                    :medium:dfs_bfs:
+** HANGUP [[https://leetcode.com/problems/redundant-connection/][Leetcode 684: Redundant Connection]]               :medium:union_find:
+** HANGUP [[https://leetcode.com/problems/push-dominoes/][Leetcode 838: Push Dominoes]]                         :medium:dfs_bfs:
+** HANGUP [[https://leetcode.com/problems/regions-cut-by-slashes/][Leetcode 959: Regions Cut By Slashes]]             :medium:union_find:
+** HANGUP [[https://leetcode.com/problems/pascals-triangle/][Leetcode 118: Pascal's Triangle]]                            :easy:dp:
+** HANGUP [[https://leetcode.com/problems/is-subsequence/][Leetcode 392: Is Subsequence]]                               :easy:dp:
+** HANGUP [[https://leetcode.com/problems/count-sorted-vowel-strings/][Leetcode 1641: Count Sorted Vowel Strings]]      :medium:backtracking:
+** HANGUP [[https://leetcode.com/problems/counting-bits/][Leetcode 338: Counting Bits]]                                :easy:dp:
+** HANGUP [[https://leetcode.com/problems/maximum-subarray/][Leetcode 53: Maximum Subarray]]                              :easy:dp:
+** HANGUP [[https://leetcode.com/problems/letter-tile-possibilities/][Leetcode 1079: Letter Tile Possibilities]]       :medium:backtracking:
+** HANGUP [[https://leetcode.com/problems/count-servers-that-communicate/][Leetcode 1267: Count Servers that Communicate]]            :medium:dp:
+** HANGUP [[https://leetcode.com/problems/n-queens/][Leetcode 51: N-Queens]]                         :hard:backtracking:dp:
+** HANGUP [[https://leetcode.com/problems/accounts-merge/][Leetcode 721: Accounts Merge]]                     :medium:union_find:
+** HANGUP [[https://leetcode.com/problems/surrounded-regions/][Leetcode 130: Surrounded Regions]]                 :medium:union_find:
+** HANGUP [[https://leetcode.com/problems/max-area-of-island/][Leetcode 695: Max Area of Island]]                 :medium:union_find:
+** HANGUP [[https://leetcode.com/problems/coin-change/][Leetcode 322: Coin Change]]                                :medium:dp:
+** HANGUP [[https://leetcode.com/problems/regular-expression-matching/][Leetcode 10: Regular Expression Matching]]                   :hard:dp:
+** HANGUP [[https://leetcode.com/problems/number-of-provinces/][Leetcode 547: Number of Provinces]]                :medium:union_find:
+** HANGUP [[https://leetcode.com/problems/min-cost-climbing-stairs/][Leetcode 746: Min Cost Climbing Stairs]]                     :easy:dp:
+** HANGUP [[https://leetcode.com/problems/count-square-submatrices-with-all-ones/][Leetcode 1277: Count Square Submatrices with All Ones]]    :medium:dp:
+** HANGUP [[https://leetcode.com/problems/reverse-nodes-in-k-group/][Leetcode 25: Reverse Nodes in K-Group]]            :medium:linkedlist:
+** HANGUP [[https://leetcode.com/problems/swim-in-rising-water/][Leetcode 778: Swim in Rising Water]]                   :hard:Dijkstra:
+** HANGUP Deep in [[id:89ae77a9-b48e-45f8-8f2c-f03dc4bde5b7][Backtracking]]
+** HANGUP [[https://leetcode.com/problems/binary-tree-pruning/][Leetcode 814: Binary Tree Pruning]]                   :medium:dfs_bfs:
+** HANGUP [[https://leetcode.com/problems/word-ladder-ii/][Leetcode 126: Word Ladder II]]                          :hard:dfs_bfs:
+** HANGUP [[https://leetcode.com/problems/non-negative-integers-without-consecutive-ones/][Leetcode 600: Non-negative Integers without Consecutive Ones]] :hard:dp:
+** HANGUP [[https://leetcode.com/problems/3sum-closest/][Leetcode 16: 3Sum Closest]]                      :medium:two_pointers:
+** HANGUP [[https://leetcode.com/problems/beautiful-array/][Leetcode 932: Beautiful Array]]                         :medium:array:
+** HANGUP [[https://leetcode.com/problems/01-matrix/][Leetcode 542: 01 Matrix]]                                  :medium:dp:
+** HANGUP [[https://leetcode.com/problems/map-sum-pairs/][Leetcode 677: Map Sum Pairs]]                         :medium:hashmap:
+** HANGUP [[https://leetcode.com/problems/making-a-large-island/][Leetcode 827: Making A Large Island]]                        :hard:dp:
+** HANGUP [[https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors/][Leetcode 1884: Egg Drop With 2 Eggs and N Floors]]         :medium:dp:
+** HANGUP [[https://leetcode.com/problems/subsets-ii][Leetcode 90: Subsets II]]                        :medium:backtracking:

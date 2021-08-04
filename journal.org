@@ -1,0 +1,15 @@
+
+
+* 2021
+
+** 2021-08 August
+
+*** 2021-08-03 Tuesday
+**** Test
+This is test centaur emacs config org mode for journal.
+:LOGBOOK:
+CLOCK: [2021-08-03 Tue 00:53]--[2021-08-03 Tue 00:54] =>  0:01
+:END:
+[2021-08-03 Tue 00:53]
+[[file:~/.emacs.d/custom.el::setq centaur-package-archives 'tuna]]
+
