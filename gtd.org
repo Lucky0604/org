@@ -1,8 +1,9 @@
 * TODO Shanbei English words learning                                :learning:
-SCHEDULED: <2021-08-05 Thu 14:00 +1d>
+SCHEDULED: <2021-08-06 Fri 14:00 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-04 Wed 14:13]
+:LAST_REPEAT: [2021-08-05 Thu 16:51]
 :END:
+- State "DONE"       from "TODO"       [2021-08-05 Thu 16:51]
 - State "DONE"       from "DOING"      [2021-08-04 Wed 14:13]
 - State "DONE"       from "TODO"       [2021-08-03 Tue 22:44]
 :LOGBOOK:
@@ -11,10 +12,11 @@ CLOCK: [2021-08-03 Tue 09:58]--[2021-08-03 Tue 09:58] =>  0:00
 :END:
 [2021-08-03 Tue 09:58]
 * TODO Finish 1 Leetcode problem                                     :learning:
-SCHEDULED: <2021-08-05 Thu 10:30 +1d>
+SCHEDULED: <2021-08-06 Fri 10:30 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-04 Wed 11:13]
+:LAST_REPEAT: [2021-08-05 Thu 16:51]
 :END:
+- State "DONE"       from "TODO"       [2021-08-05 Thu 16:51]
 - State "DONE"       from "DOING"      [2021-08-04 Wed 11:13]
 - State "DONE"       from "TODO"       [2021-08-03 Tue 12:36]
 :LOGBOOK:
@@ -46,8 +48,8 @@ CLOCK: [2021-08-03 Tue 11:23]--[2021-08-03 Tue 11:23] =>  0:00
 :END:
 [2021-08-03 Tue 11:22]
 [[file:~/org/RoamNotes/20210803025017-leetcode.org::+title: Leetcode]]
-* TODO Add record number to personal website: fastdata.top
-SCHEDULED: <2021-08-04 Wed 14:30>
+* DONE Add record number to personal website: fastdata.top
+CLOSED: [2021-08-05 Thu 16:50] SCHEDULED: <2021-08-04 Wed 14:30>
 :LOGBOOK:
 CLOCK: [2021-08-04 Wed 12:18]--[2021-08-04 Wed 12:19] =>  0:01
 :END:
