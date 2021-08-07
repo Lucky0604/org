@@ -38,3 +38,50 @@ JVM其实就类似于一台小电脑运行在windows或者linux这些操作系�
 - Java文件经过编译后变成 .class 字节码文件
 - 字节码文件通过类加载器被搬运到 JVM 虚拟机中
 - 虚拟机主要的5大块：方法区，堆都为线程共享区域，有线程安全问题，栈和本地方法栈和计数器都是独享区域，不存在线程安全问题，而 JVM 的调优主要就是围绕堆，栈两大块进行
+
+** 简单的代码例子
+一个简单的学生类
+#+BEGIN_SRC java
+  public class Student {
+      public String name;
+      public Student(String name) {
+          this.name = name;
+      }
+  }
+#+END_SRC
+
+一个main方法
+#+BEGIN_SRC java
+
+  public class App {
+      public status void main(String[] args) {
+          Student student = new Student("Test");
+          student.sayName();
+      }
+  }
+#+END_SRC
+
+- 执行main方法的步骤如下：
+    - 编译好 App.java 后得到 App.class 后，执行 App.class，系统会启动一个 JVM 进程，从 classpath 路径中找到一个名为 App.class 的二进制文件，将 App 的类信息加载到运行时数据区的方法区内，这个过程叫做 App 类的加载
+    - JVM 找到 App 的主程序入口，执行main方法
+    - 这个main中的第一条语句为 Student student = new Student("tellUrDream") ，就是让 JVM 创建一个Student对象，但是这个时候方法区中是没有 Student 类的信息的，所以 JVM 马上加载 Student 类，把 Student 类的信息放到方法区中
+    - 加载完 Student 类后，JVM 在堆中为一个新的 Student 实例分配内存，然后调用构造函数初始化 Student 实例，这个 Student 实例持有 **指向方法区中的 Student 类的类型信息** 的引用
+    - 执行student.sayName();时，JVM 根据 student 的引用找到 student 对象，然后根据 student 对象持有的引用定位到方法区中 student 类的类型信息的方法表，获得 sayName() 的字节码地址
+    - 执行sayName()
+
+
+
+* 类加载器的介绍
+之前也提到了它是负责加载.class文件的，它们在文件开头会有特定的文件标示，将class文件字节码内容加载到内存中，并将这些内容转换成方法区中的运行时数据结构，并且ClassLoader只负责class文件的加载，而是否能够运行则由 Execution Engine 来决定
+** 类加载器的流程
+从类被加载到虚拟机内存中开始，到释放内存总共有7个步骤：加载，验证，准备，解析，初始化，使用，卸载。其中 *验证，准备，解析三个部分统称为连接*
+*** 加载
+- 将class文件加载到内存
+- 将静态数据结构转化成方法区中运行时的数据结构
+- 在堆中生成一个代表这个类的 java.lang.Class对象作为数据访问的入口
+
+*** 链接
+- 验证：确保加载的类符合 JVM 规范和安全，保证被校验类的方法在运行时不会做出危害虚拟机的事件，其实就是一个安全检查
+- 准备：为static变量在方法区中分配内存空间，设置变量的初始值，例如 static int a = 3 （注意：准备阶段只设置类中的静态变量（方法区中），不包括实例变量（堆内存中），实例变量是对象初始化时赋值的）
+- 解析：虚拟机将常量池内的符号引用替换为直接引用的过程（符号引用比如我现在import java.util.ArrayList这就算符号引用，直接引用就是指针或者对象地址，注意引用对象一定是在内存进行）
+
