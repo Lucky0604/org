@@ -64,8 +64,8 @@ JVM其实就类似于一台小电脑运行在windows或者linux这些操作系�
 - 执行main方法的步骤如下：
     - 编译好 App.java 后得到 App.class 后，执行 App.class，系统会启动一个 JVM 进程，从 classpath 路径中找到一个名为 App.class 的二进制文件，将 App 的类信息加载到运行时数据区的方法区内，这个过程叫做 App 类的加载
     - JVM 找到 App 的主程序入口，执行main方法
-    - 这个main中的第一条语句为 Student student = new Student("tellUrDream") ，就是让 JVM 创建一个Student对象，但是这个时候方法区中是没有 Student 类的信息的，所以 JVM 马上加载 Student 类，把 Student 类的信息放到方法区中
-    - 加载完 Student 类后，JVM 在堆中为一个新的 Student 实例分配内存，然后调用构造函数初始化 Student 实例，这个 Student 实例持有 **指向方法区中的 Student 类的类型信息** 的引用
+    - 这个main中的第一条语句为 Student student = new Student("Test") ，就是让 JVM 创建一个Student对象，但是这个时候方法区中是没有 Student 类的信息的，所以 JVM 马上加载 Student 类，把 Student 类的信息放到方法区中
+    - 加载完 Student 类后，JVM 在堆中为一个新的 Student 实例分配内存，然后调用构造函数初始化 Student 实例，这个 Student 实例持有 *指向方法区中的 Student 类的类型信息* 的引用
     - 执行student.sayName();时，JVM 根据 student 的引用找到 student 对象，然后根据 student 对象持有的引用定位到方法区中 student 类的类型信息的方法表，获得 sayName() 的字节码地址
     - 执行sayName()
 
@@ -80,8 +80,35 @@ JVM其实就类似于一台小电脑运行在windows或者linux这些操作系�
 - 将静态数据结构转化成方法区中运行时的数据结构
 - 在堆中生成一个代表这个类的 java.lang.Class对象作为数据访问的入口
 
-*** 链接
+*** 连接
 - 验证：确保加载的类符合 JVM 规范和安全，保证被校验类的方法在运行时不会做出危害虚拟机的事件，其实就是一个安全检查
 - 准备：为static变量在方法区中分配内存空间，设置变量的初始值，例如 static int a = 3 （注意：准备阶段只设置类中的静态变量（方法区中），不包括实例变量（堆内存中），实例变量是对象初始化时赋值的）
 - 解析：虚拟机将常量池内的符号引用替换为直接引用的过程（符号引用比如我现在import java.util.ArrayList这就算符号引用，直接引用就是指针或者对象地址，注意引用对象一定是在内存进行）
+
+*** 初始化
+初始化其实就是执行类构造器方法的`<clinit>()`的过程，而且要保证执行前父类的`<clinit>()`方法执行完毕。这个方法由编译器收集，顺序执行所有类变量（static修饰的成员变量）显式初始化和静态代码块中语句。此时准备阶段时的那个 `static int a` 由默认初始化的0变成了显式初始化的3. 由于执行顺序缘故，初始化阶段类变量如果在静态代码块中又进行了更改，会覆盖类变量的显式初始化，最终值会为静态代码块中的赋值
+#+BEGIN_QUOTE
+注意：字节码文件中初始化方法有两种，非静态资源初始化的`<init>`和静态资源初始化的`<clinit>`，类构造器方法`<clinit>()`不同于类的构造器，这些方法都是字节码文件中只能给JVM识别的特殊方法
+#+END_QUOTE
+
+*** 卸载
+GC将无用对象从内存中卸载
+
+** 类加载器的加载顺序
+加载一个Class类的顺序也是有优先级的，类加载器从最底层开始往上的顺序是这样的
+- BootStrap ClassLoader：rt.jar
+- Extension ClassLoader: 加载扩展的jar包
+- App ClassLoader：指定的classpath下面的jar包
+- Custom ClassLoader：自定义的类加载器
+
+** 双亲委派机制
+当一个类收到了加载请求时，它是不会先自己去尝试加载的，而是委派给父类去完成，比如我现在要new一个Person，这个Person是我们自定义的类，如果我们要加载它，就会先委派App ClassLoader，只有当父类加载器都反馈自己无法完成这个请求（也就是父类加载器都没有找到加载所需的Class）时，子类加载器才会自行尝试加载
+这样做的好处是，加载位于rt.jar包中的类时不管是哪个加载器加载，最终都会委托到BootStrap ClassLoader进行加载，这样保证了使用不同的类加载器得到的都是同一个结果
+其实这个也是一个隔离的作用，避免了我们的代码影响了JDK的代码，比如我现在要来一个
+#+BEGIN_SRC java
+public class String(){
+    public static void main(){sout;}
+}
+#+END_SRC
+这种时候，我们的代码肯定会报错，因为在加载的时候其实是找到了rt.jar中的String.class，然后发现这也没有main方法
 
