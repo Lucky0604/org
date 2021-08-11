@@ -1,0 +1,5 @@
+* Inbox
+** [2021-08-11 Wed] [[https://tech.meituan.com/2021/08/05/acl-2021-meituan-07-papers.html][ACL 2021 | 一文详解美团技术团队7篇精选论文]]
+ACL: 计算语言学协会
+
+[[file:~/org/todo.org::*Read a technique article and write some notes][Read a technique article and write some notes]]
