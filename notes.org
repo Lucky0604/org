@@ -1,4 +1,6 @@
 * Inbox
+** [2021-08-13 Fri] Tensorflow pipeline config setup :tensorflow:issue:
+If training models by using GPU, and there's an error of "CUDA_ERROR_OUT_OF_MEMORY", it can be fixed by change the batch size to 100.
 ** [2021-08-12 Thu] 自考本科相关事宜
 本科目标学校：华中农业大学
 专业：机电一体化
