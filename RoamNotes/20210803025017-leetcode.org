@@ -373,3 +373,4 @@
 ** HANGUP [[https://leetcode.com/problems/number-of-good-ways-to-split-a-string/][Leetcode 1525: Number of Good Ways to Split a String]] :medium:sliding_window:
 ** HANGUP [[https://leetcode.com/problems/add-strings/][Leetcode 415: Add Strings]]                              :easy:string:
 ** HOLD [[https://leetcode.com/problems/flip-string-to-monotone-increasing/][Leetcode 926: Flip String to Monostone Increasing]] :dp:medium:
+** HOLD [[https://leetcode.com/problems/array-of-doubled-pairs/][Leetcode 954: Array of Double pairs]] :medium:hashmap:
