@@ -237,6 +237,8 @@ JVM的参数非常之多，这里只列举比较重要的几个，通过各种�
 | -XX:PretenureSizeThreshold | 对象超过多大是直接在旧生代分配                             | 0                    | 单位字节 新生代采用Parallel ScavengeGC时无效另一种直接在旧生代分配的情况是大的数组对象,且数组中无外部引用对象.                                                                                                                                                                                                                                                                                                                                                                                           |
 | -XX:ParallelGCThreads      | 并行收集器的线程数                                         |                      | 此值最好配置与处理器数目相等 同样适用于CMS                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | -XX:MaxGCPauseMillis       | 每次年轻代垃圾回收的最长时间(最大暂停时间)                 |                      | 如果无法满足此时间,JVM会自动调整年轻代大小,以满足此值.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+
+
 * 关于JVM调优的一些方面
 根据刚刚涉及的jvm的知识点，我们可以尝试对JVM进行调优，主要就是堆内存那块
 
@@ -298,3 +300,43 @@ System.out.println("total mem=" + Runtime.getRuntime().totalMemory() / 1024.0 / 
 [[https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/4cc44b5d5d1c40c48640ece6a296b1ac-new-image4b57baf6-085b-4150-9c60-ac51b0f815d7.png]]
 
 此时我们手动执行了一次fullgc，此时total memory的内存空间又变回5.5M了，此时又是把申请的内存释放掉的结果
+
+** 调整新生代和老年代的比值
+
+-XX:NewRatio --- 新生代（eden+2*Survivor）和老年代（不包含永久区）的比值
+
+例如：-XX:NewRatio=4，表示新生代:老年代=1:4，即新生代占整个堆的1/5。在Xms=Xmx并且设置了Xmn的情况下，该参数不需要进行设置。
+** 调整Survivor区和Eden区的比值
+-XX:SurvivorRatio（幸存代）--- 设置两个Survivor区和eden的比值
+
+例如：8，表示两个Survivor:eden=2:8，即一个Survivor占年轻代的1/10
+** 设置年轻代和老年代的大小
+
+-XX:NewSize --- 设置年轻代大小
+
+-XX:MaxNewSize --- 设置年轻代最大值
+
+可以通过设置不同参数来测试不同的情况，反正最优解当然就是官方的Eden和Survivor的占比为8:1:1，然后在刚刚介绍这些参数的时候都已经附带了一些说明，感兴趣的也可以看看。反正最大堆内存和最小堆内存如果数值不同会导致多次的gc，需要注意。
+** 小总结
+根据实际事情调整新生代和幸存代的大小，官方推荐新生代占java堆的3/8，幸存代占新生代的1/10
+
+在OOM时，记得Dump出堆，确保可以排查现场问题，通过下面命令你可以输出一个.dump文件，这个文件可以使用VisualVM或者Java自带的Java VisualVM工具。
+
+#+begin_src shell
+-Xmx20m -Xms5m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=你要输出的日志路径
+#+end_src
+一般我们也可以通过编写脚本的方式来让OOM出现时给我们报个信，可以通过发送邮件或者重启程序等来解决。
+** 永久区的设置
+#+begin_src shell
+-XX:PermSize -XX:MaxPermSize
+#+end_src
+初始空间（默认为物理内存的1/64）和最大空间（默认为物理内存的1/4）。也就是说，jvm启动时，永久区一开始就占用了PermSize大小的空间，如果空间还不够，可以继续扩展，但是不能超过MaxPermSize，否则会OOM。
+tips：如果堆空间没有用完也抛出了OOM，有可能是永久区导致的。堆空间实际占用非常少，但是永久区溢出 一样抛出OOM。
+** JVM的栈参数调优
+*** 调整每个线程栈空间的大小
+可以通过-Xss：调整每个线程栈空间的大小
+
+JDK5.0以后每个线程堆栈大小为1M，以前每个线程堆栈大小为256K。在相同物理内存下,减小这个值能生成更多的线程。但是操作系统对一个进程内的线程数还是有限制的，不能无限生成，经验值在3000~5000左右
+*** 设置线程栈的大小
+-XXThreadStackSize：
+        设置线程栈的大小(0 means use default stack size)

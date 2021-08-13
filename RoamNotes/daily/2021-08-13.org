@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       b44fb246-42d8-4354-a033-b21c87ce888b
+:END:
+#+title: 2021-08-13
+
+Daily Notes:
+- Reading:
+  - 了解Hadoop中MapReduce任务执行原理
+  - 阅读美团博客 - 一文解读美团技术团队精选论文概述，主要针对NLP领域发布的一些论文，结合实际场景的优化
