@@ -1,4 +1,16 @@
 * Inbox
+** [2021-08-14 Sat] Solve 'Not using XLS: CPU for cluster'
+Training custom model by using tensorflow, when it appears a warning like 'Not using XLA:CPU for cluster because envvar TF_XLA_FLAGS=--tf_xla_cpu_global_jit was not set.  If you want XLA:CPU, either set that envvar, or use experimental_jit_scope to enable XLA:CPU', solve it like this:
+#+begin_src shell
+# add the code below into /etc/profile
+export XLA_FLAGS=--xla_hlo_profile
+export TF_XLA_FLAGS=--tf_xla_cpu_global_jit
+
+export PATH=$PATH:$XLA_FLAGS:$TF_XLA_FLAGS
+
+# then source /etc/profile
+#+end_src
+
 ** [2021-08-13 Fri] Tensorflow pipeline config setup :tensorflow:issue:
 If training models by using GPU, and there's an error of "CUDA_ERROR_OUT_OF_MEMORY", it can be fixed by change the batch size to 100.
 ** [2021-08-12 Thu] 自考本科相关事宜
