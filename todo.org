@@ -1,8 +1,10 @@
 * TODO Shanbei English words learning :learning:
-SCHEDULED: <2021-08-14 Sat 14:00 +1d>
+SCHEDULED: <2021-08-16 Mon 14:00 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-12 Thu 14:39]
+:LAST_REPEAT: [2021-08-15 Sun 23:31]
 :END:
+- State "DONE"       from "TODO"       [2021-08-15 Sun 23:31]
+- State "DONE"       from "TODO"       [2021-08-15 Sun 12:16]
 - State "DONE"       from "TODO"       [2021-08-12 Thu 14:39]
 - State "DONE"       from "TODO"       [2021-08-12 Thu 14:22]
 - State "DONE"       from "STRT"       [2021-08-11 Wed 14:25]
@@ -23,10 +25,11 @@ CLOCK: [2021-08-03 Tue 09:58]--[2021-08-03 Tue 09:58] =>  0:00
 :END:
 [2021-08-03 Tue 09:58]
 * TODO Finish 1 Leetcode problem :learning:
-SCHEDULED: <2021-08-15 Sun 10:30 +1d>
+SCHEDULED: <2021-08-16 Mon 10:30 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-14 Sat 10:26]
+:LAST_REPEAT: [2021-08-15 Sun 13:06]
 :END:
+- State "DONE"       from "STRT"       [2021-08-15 Sun 13:06]
 - State "DONE"       from "STRT"       [2021-08-14 Sat 10:26]
 - State "DONE"       from "STRT"       [2021-08-13 Fri 11:59]
 - State "DONE"       from "STRT"       [2021-08-12 Thu 11:15]
@@ -40,6 +43,7 @@ SCHEDULED: <2021-08-15 Sun 10:30 +1d>
 - State "DONE"       from "DOING"      [2021-08-04 Wed 11:13]
 - State "DONE"       from "TODO"       [2021-08-03 Tue 12:36]
 :LOGBOOK:
+CLOCK: [2021-08-15 Sun 13:03]--[2021-08-15 Sun 13:06] =>  0:03
 CLOCK: [2021-08-14 Sat 10:16]--[2021-08-14 Sat 10:26] =>  0:10
 CLOCK: [2021-08-13 Fri 11:48]--[2021-08-13 Fri 11:59] =>  0:11
 CLOCK: [2021-08-12 Thu 10:02]--[2021-08-12 Thu 10:27] =>  0:25
@@ -54,10 +58,11 @@ CLOCK: [2021-08-03 Tue 10:14]--[2021-08-03 Tue 10:15] =>  0:01
 :END:
 [2021-08-03 Tue 10:14]
 * TODO [[id:cb6871f7-e947-4c60-a04e-244ccaf8b59b][Java Interview Questions]] :learning:
-SCHEDULED: <2021-08-15 Sun 12:00 +1d>
+SCHEDULED: <2021-08-16 Mon 12:00 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-14 Sat 10:47]
+:LAST_REPEAT: [2021-08-15 Sun 13:23]
 :END:
+- State "KILL"       from "TODO"       [2021-08-15 Sun 13:23]
 - State "DONE"       from "STRT"       [2021-08-14 Sat 10:47]
 - State "DONE"       from "STRT"       [2021-08-13 Fri 12:14]
 - State "DONE"       from "STRT"       [2021-08-12 Thu 12:05]
@@ -101,10 +106,12 @@ CLOCK: [2021-08-04 Wed 12:18]--[2021-08-04 Wed 12:19] =>  0:01
 :END:
 [2021-08-04 Wed 12:18]
 * TODO Reading Hadoop definition guide
-SCHEDULED: <2021-08-14 Sat 12:00 +1d>
+SCHEDULED: <2021-08-16 Mon 12:00 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-13 Fri 13:16]
+:LAST_REPEAT: [2021-08-15 Sun 13:23]
 :END:
+- State "KILL"       from "TODO"       [2021-08-15 Sun 13:23]
+- State "KILL"       from "TODO"       [2021-08-15 Sun 13:17]
 - State "DONE"       from "STRT"       [2021-08-13 Fri 13:16]
 - State "DONE"       from "STRT"       [2021-08-12 Thu 12:28]
 - State "DONE"       from "STRT"       [2021-08-11 Wed 11:40]
@@ -135,6 +142,10 @@ CLOCK: [2021-08-09 Mon 18:56]--[2021-08-09 Mon 18:57] =>  0:01
 [2021-08-09 Mon 18:56]
 [[file:~/Documents/code/Work/java-data-handlers/src/main/scala/com/labelhub/datahandlers/nuport/ExportTxt.scala::dataArr.forEach(dataItem => {]]
 * Inbox
+** STRT fix the qa-info loss content issue :work:labelhub:
+SCHEDULED: <2021-08-15 Sun>
+** TODO show pid info on project card :work:labelhub:
+SCHEDULED: <2021-08-15 Sun>
 ** WAIT differ the label detail :work:
 SCHEDULED: <2021-08-12 Thu 15:00>
 :LOGBOOK:
@@ -147,10 +158,12 @@ CLOCK: [2021-08-12 Thu 16:20]--[2021-08-12 Thu 16:45] =>  0:25
 SCHEDULED: <2021-08-12 Thu 13:00>
 
 ** TODO Read a technique article and write some notes :learning:
-SCHEDULED: <2021-08-14 Sat 14:20 +1d>
+SCHEDULED: <2021-08-16 Mon 14:20 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-13 Fri 14:41]
+:LAST_REPEAT: [2021-08-15 Sun 13:23]
 :END:
+- State "KILL"       from "TODO"       [2021-08-15 Sun 13:23]
+- State "KILL"       from "TODO"       [2021-08-15 Sun 13:18]
 - State "DONE"       from "STRT"       [2021-08-13 Fri 14:41]
 - State "KILL"       from "TODO"       [2021-08-13 Fri 12:16]
 - State "DONE"       from "STRT"       [2021-08-11 Wed 15:01]
