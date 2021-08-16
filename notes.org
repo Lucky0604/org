@@ -1,4 +1,15 @@
 * Inbox
+** [2021-08-16 Mon] [[https://tech.meituan.com/2021/08/12/kdd-2021-aitm.html][多任务模型]] :machine_learning:articles:
+- 多任务学习是一个提高端到端获客转化率的典型解决方案
+
+实验步骤:
+- 选择数据集
+- 离线、在线实验
+- 消融实验
+- 超参数实验
+- case study
+
+[[file:~/org/todo.org::*Read a technique article and write some notes][Read a technique article and write some notes]]
 ** [2021-08-14 Sat] Solve 'Not using XLS: CPU for cluster'
 Training custom model by using tensorflow, when it appears a warning like 'Not using XLA:CPU for cluster because envvar TF_XLA_FLAGS=--tf_xla_cpu_global_jit was not set.  If you want XLA:CPU, either set that envvar, or use experimental_jit_scope to enable XLA:CPU', solve it like this:
 #+begin_src shell
