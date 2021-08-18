@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       652fa5b2-80c6-48cc-b8bd-cf92766f466d
+:END:
+#+title: 数据结构与算法
+
+* 数据结构
+** [[id:ab0b1cbd-a1bf-4c1a-b389-adbfc7c2a7d7][队列与栈]]

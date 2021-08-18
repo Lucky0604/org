@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       f5f3e2d2-46a4-4b24-929c-569edd93488b
+:END:
+#+title: Java Skills
+* Java
+** Core Java
+** Java web
+*** [[id:8e647879-2f96-4bb2-8cfe-3941d9d8c133][Spring]]
+*** [[id:31b0ac29-310c-4214-896e-2d6528b1eae7][Mybatis]]
+*** [[id:50c70cfc-62ed-460d-b092-c5229107594d][Netty]]
