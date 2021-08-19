@@ -13,3 +13,7 @@
     - [[id:f5f3e2d2-46a4-4b24-929c-569edd93488b][Java Skills]]
 
 *** 项目
+
+*** 面试问题
+- [[id:cb6871f7-e947-4c60-a04e-244ccaf8b59b][Java Interview Questions]]
+- [[id:a59ec386-1853-40f5-bca5-56a85e733111][大数据面试相关问题及答案]]

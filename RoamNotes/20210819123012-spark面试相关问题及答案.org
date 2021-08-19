@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       11f91f32-2cd9-46f0-a060-68785ee9146b
+:END:
+#+title: Spark面试相关问题及答案
+
+- Spark 运行架构的特点是什么
+
+  每个 Application 获取专属的 executor 进程，该进程在 Application 期间一直驻留，并以多线程方式运行 tasks。Spark 任务与资源管理器无关，只要能够获取 executor 进程，并能保持相互通信就可以了。提交 SparkContext 的 Client 应该靠近 Worker 节点（运行 Executor 的节点)，最好是在同一个 Rack 里，因为 Spark 程序运行过程中 SparkContext 和Executor 之间有大量的信息交换；如果想在远程集群中运行，最好使用 RPC 将SparkContext 提交给集群，不要远离 Worker 运行 SparkContext。Task 采用了数据本地性和推测执行的优化机制
+
+- Spark 中的 RDD 是什么
+
+  RDD（Resilient Distributed Dataset）叫做分布式数据集，是 Spark 中最基本的数据抽象，它代表一个不可变、可分区、里面的元素可并行计算的集合。RDD 中的数据可以存储在内存或者是磁盘，而且RDD 中的分区是可以改变的
+
+- Spark 中的常用算子有哪些区别
+
+  map ： 用 于 遍 历 RDD ， 将 函 数 f 应 用 于 每 一 个 元 素 ， 返 回 新 的RDD(transformation 算子)；foreach：用于遍历 RDD，将函数 f 应用于每一个元素，无返回值(action 算子)；mapPartitions：用于遍历操作 RDD 中的每一个分区，返回生成一个新的RDD（transformation 算子）；foreachPartition： 用于遍历操作 RDD 中的每一个分区。无返回值(action 算子)。总结的来说，一般使用 mapPartitions 或者 foreachPartition 算子比 map 和 foreach更加高效，推荐使用
+
+- spark 中 cache 和 persist 有什么区别
+
+  cache：缓存数据，默认是缓存在内存中，其本质还是调用 persist；persist：缓存数据，有丰富的数据缓存策略。数据可以保存在内存也可以保存在磁盘中，使用的时候指定对应的缓存级别就可以了
+
+- 如何解决 spark 中的数据倾斜问题
+
+  这也是在大数据岗位上会常常遇到的问题，当我们发现数据倾斜的时候，不要急于提高 executor 的资源，修改参数或是修改程序，首先要检查数据本身，是否存在异常数据。如果是数据问题造成的数据倾斜，找出异常的 key，如果任务长时间卡在最后最后 1 个(几个)任务，首先要对 key 进行抽样分析，判断是哪些 key 造成的。选取 key，对数据进行抽样，统计出现的次数，根据出现次数大小排序取出前几个
+
+- 谈谈 你对spark中宽窄依赖的认识
+
+  RDD 和它依赖的父 RDD（s）的关系有两种不同的类型，即窄依赖（narrow dependency）和宽依赖（wide dependency）。宽依赖指的是多个子 RDD 的 Partition 会依赖同一个父 RDD 的 Partition窄依赖：指的是每一个父 RDD 的 Partition 最多被子 RDD 的一个 Partition使用
