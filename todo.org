@@ -1,8 +1,9 @@
 * TODO Shanbei English words learning :learning:
-SCHEDULED: <2021-08-19 Thu 14:00 +1d>
+SCHEDULED: <2021-08-20 Fri 14:00 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-18 Wed 17:35]
+:LAST_REPEAT: [2021-08-20 Fri 10:06]
 :END:
+- State "KILL"       from "TODO"       [2021-08-20 Fri 10:06]
 - State "DONE"       from "TODO"       [2021-08-18 Wed 17:35]
 - State "DONE"       from "TODO"       [2021-08-17 Tue 23:43]
 - State "DONE"       from "STRT"       [2021-08-16 Mon 14:15]
@@ -29,10 +30,11 @@ CLOCK: [2021-08-03 Tue 09:58]--[2021-08-03 Tue 09:58] =>  0:00
 :END:
 [2021-08-03 Tue 09:58]
 * TODO Finish 1 Leetcode problem :learning:
-SCHEDULED: <2021-08-20 Fri 10:30 +1d>
+SCHEDULED: <2021-08-21 Sat 10:30 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-19 Thu 10:48]
+:LAST_REPEAT: [2021-08-20 Fri 11:05]
 :END:
+- State "DONE"       from "TODO"       [2021-08-20 Fri 11:05]
 - State "DONE"       from "TODO"       [2021-08-19 Thu 10:48]
 - State "DONE"       from "TODO"       [2021-08-18 Wed 12:14]
 - State "DONE"       from "TODO"       [2021-08-17 Tue 19:14]
@@ -67,10 +69,11 @@ CLOCK: [2021-08-03 Tue 10:14]--[2021-08-03 Tue 10:15] =>  0:01
 :END:
 [2021-08-03 Tue 10:14]
 * TODO [[id:cb6871f7-e947-4c60-a04e-244ccaf8b59b][Java Interview Questions]] :learning:
-SCHEDULED: <2021-08-20 Fri 12:00 +1d>
+SCHEDULED: <2021-08-21 Sat 12:00 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-19 Thu 11:36]
+:LAST_REPEAT: [2021-08-20 Fri 12:15]
 :END:
+- State "DONE"       from "STRT"       [2021-08-20 Fri 12:15]
 - State "DONE"       from "STRT"       [2021-08-19 Thu 11:36]
 - State "DONE"       from "TODO"       [2021-08-18 Wed 12:46]
 - State "KILL"       from "TODO"       [2021-08-18 Wed 11:05]
@@ -89,6 +92,7 @@ SCHEDULED: <2021-08-20 Fri 12:00 +1d>
 - State "DONE"       from "DOING"      [2021-08-04 Wed 12:10]
 - State "DONE"       from "DOING"      [2021-08-03 Tue 11:07]
 :LOGBOOK:
+CLOCK: [2021-08-20 Fri 11:26]--[2021-08-20 Fri 11:51] =>  0:25
 CLOCK: [2021-08-19 Thu 11:21]--[2021-08-19 Thu 11:36] =>  0:15
 CLOCK: [2021-08-18 Wed 12:24]--[2021-08-18 Wed 12:46] =>  0:22
 CLOCK: [2021-08-16 Mon 11:03]--[2021-08-16 Mon 11:20] =>  0:17
@@ -119,10 +123,11 @@ CLOCK: [2021-08-04 Wed 12:18]--[2021-08-04 Wed 12:19] =>  0:01
 :END:
 [2021-08-04 Wed 12:18]
 * TODO Reading Hadoop definition guide
-SCHEDULED: <2021-08-20 Fri 12:00 +1d>
+SCHEDULED: <2021-08-21 Sat 12:00 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-19 Thu 12:01]
+:LAST_REPEAT: [2021-08-20 Fri 12:31]
 :END:
+- State "DONE"       from "STRT"       [2021-08-20 Fri 12:31]
 - State "DONE"       from "STRT"       [2021-08-19 Thu 12:01]
 - State "DONE"       from "STRT"       [2021-08-18 Wed 13:23]
 - State "KILL"       from "TODO"       [2021-08-18 Wed 11:05]
@@ -163,14 +168,23 @@ CLOCK: [2021-08-09 Mon 18:56]--[2021-08-09 Mon 18:57] =>  0:01
 [2021-08-09 Mon 18:56]
 [[file:~/Documents/code/Work/java-data-handlers/src/main/scala/com/labelhub/datahandlers/nuport/ExportTxt.scala::dataArr.forEach(dataItem => {]]
 * Inbox
-** TODO Read and learning Leetcode cn data type articles :learning:
-SCHEDULED: <2021-08-20 Fri 10:00 +1d>
-:PROPERTIES:
-:LAST_REPEAT: [2021-08-19 Thu 11:20]
+** DONE Handle the Guowang Image :labelhub:work:
+SCHEDULED: <2021-08-20 Fri 11:10>
+:LOGBOOK:
+CLOCK: [2021-08-20 Fri 11:19]--[2021-08-20 Fri 11:24] =>  0:05
 :END:
+
+** TODO Read and learning Leetcode cn data type articles :learning:
+SCHEDULED: <2021-08-21 Sat 10:00 +1d>
+:PROPERTIES:
+:LAST_REPEAT: [2021-08-20 Fri 11:03]
+:END:
+- State "DONE"       from "STRT"       [2021-08-20 Fri 11:03]
 - State "DONE"       from "STRT"       [2021-08-19 Thu 11:20]
 - State "DONE"       from "STRT"       [2021-08-18 Wed 12:14]
 :LOGBOOK:
+CLOCK: [2021-08-20 Fri 10:56]--[2021-08-20 Fri 11:03] =>  0:07
+CLOCK: [2021-08-20 Fri 10:07]--[2021-08-20 Fri 10:32] =>  0:25
 CLOCK: [2021-08-19 Thu 10:46]--[2021-08-19 Thu 11:11] =>  0:25
 CLOCK: [2021-08-19 Thu 10:00]--[2021-08-19 Thu 10:25] =>  0:25
 CLOCK: [2021-08-18 Wed 11:35]--[2021-08-18 Wed 12:00] =>  0:25
@@ -198,10 +212,11 @@ CLOCK: [2021-08-12 Thu 16:20]--[2021-08-12 Thu 16:45] =>  0:25
 SCHEDULED: <2021-08-12 Thu 13:00>
 
 ** TODO Read a technique article and write some notes :learning:
-SCHEDULED: <2021-08-19 Thu 14:20 +1d>
+SCHEDULED: <2021-08-20 Fri 14:20 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-19 Thu 10:00]
+:LAST_REPEAT: [2021-08-20 Fri 10:07]
 :END:
+- State "KILL"       from "TODO"       [2021-08-20 Fri 10:07]
 - State "KILL"       from "TODO"       [2021-08-19 Thu 10:00]
 - State "KILL"       from "TODO"       [2021-08-18 Wed 11:05]
 - State "DONE"       from "STRT"       [2021-08-16 Mon 14:32]
