@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       c1ba20bd-b142-4f92-a945-1ff9cef74a57
+:END:
+#+title: Spring Cloud开发笔记
+* Spring Cloud开发笔记
+** 环境搭建
+- 使用IDEA新建空白maven项目
+- POM中管理SpringCloud版本，其余需要引用的包在子模块中单独进行管理
+
+** 开发顺序
+*** 编写模块相关配置
+*** 编写模块domain相关类

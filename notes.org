@@ -1,4 +1,8 @@
 * Inbox
+** [2021-08-23 Mon] [[https://tech.meituan.com/2021/08/19/low-resource-learning.html][小样本学习在美团中的应用]] :machine_learning:
+[[https://p1.meituan.net/travelcube/28298c53b2c2ed3c50c6bd62e946ab343112883.png]]
+
+
 ** [2021-08-16 Mon] [[https://tech.meituan.com/2021/08/12/kdd-2021-aitm.html][多任务模型]] :machine_learning:articles:
 - 多任务学习是一个提高端到端获客转化率的典型解决方案
 
