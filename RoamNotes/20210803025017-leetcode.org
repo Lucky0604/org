@@ -383,3 +383,4 @@
 ** HOLD [[https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/][Leetcode 150: Evaluate Reverse Polish Notation]] :medium:stack:
 ** HOLD [[https://leetcode-cn.com/problems/clone-graph/][Leetcode 133: Clone Graph]] :medium:dfs_bfs:
 ** HOLD [[https://leetcode-cn.com/problems/target-sum/][Leetcode 494: Target Sum]] :medium:dfs_bfs:
+** HOLD [[https://leetcode-cn.com/problems/decode-string/][Leetcode 394: Decode String]] :medium:stack:
