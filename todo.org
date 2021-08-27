@@ -212,7 +212,7 @@ SCHEDULED: <2021-08-20 Fri 11:10>
 CLOCK: [2021-08-20 Fri 11:19]--[2021-08-20 Fri 11:24] =>  0:05
 :END:
 
-** TODO Read and learning Leetcode cn data type articles :learning:
+** STRT Read and learning Leetcode cn data type articles :learning:
 SCHEDULED: <2021-08-27 Fri 10:00 +1d>
 :PROPERTIES:
 :LAST_REPEAT: [2021-08-26 Thu 11:09]
@@ -227,6 +227,8 @@ SCHEDULED: <2021-08-27 Fri 10:00 +1d>
 - State "DONE"       from "STRT"       [2021-08-19 Thu 11:20]
 - State "DONE"       from "STRT"       [2021-08-18 Wed 12:14]
 :LOGBOOK:
+CLOCK: [2021-08-27 Fri 11:10]--[2021-08-27 Fri 11:35] =>  0:25
+CLOCK: [2021-08-27 Fri 10:02]--[2021-08-27 Fri 10:27] =>  0:25
 CLOCK: [2021-08-26 Thu 10:48]--[2021-08-26 Thu 11:09] =>  0:21
 CLOCK: [2021-08-26 Thu 10:10]--[2021-08-26 Thu 10:35] =>  0:25
 CLOCK: [2021-08-25 Wed 10:43]--[2021-08-25 Wed 11:08] =>  0:25
@@ -266,10 +268,11 @@ CLOCK: [2021-08-12 Thu 16:20]--[2021-08-12 Thu 16:45] =>  0:25
 SCHEDULED: <2021-08-12 Thu 13:00>
 
 ** TODO Read a technique article and write some notes :learning:
-SCHEDULED: <2021-08-26 Thu 14:20 +1d>
+SCHEDULED: <2021-08-27 Fri 14:20 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-26 Thu 10:09]
+:LAST_REPEAT: [2021-08-27 Fri 10:01]
 :END:
+- State "KILL"       from "TODO"       [2021-08-27 Fri 10:01]
 - State "KILL"       from "TODO"       [2021-08-26 Thu 10:09]
 - State "KILL"       from "TODO"       [2021-08-25 Wed 10:13]
 - State "DONE"       from "STRT"       [2021-08-23 Mon 14:29]

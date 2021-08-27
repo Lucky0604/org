@@ -331,7 +331,89 @@
     		    }
     		}
     		#+END_SRC
-** HANGUP [[https://leetcode.com/problems/number-of-enclaves/][Leetcode 1020: Number of Enclaves]]                   :medium:dfs_bfs:
+** [[https://leetcode.com/problems/number-of-enclaves/][Leetcode 1020: Number of Enclaves]] :medium:dfs_bfs:
+解题思路：
+理解题意，计算在区域范围内所有无法到达边界的1的数量，那么可以通过先扫描边界的1，通过上下左右四个移动路径，同化所有路径上的1变为0，进而计算区域内无法同化为0的1的个数
+- BFS方式
+  - 定义一个二维数组作为可以上下左右移动的路径
+    #+begin_src java
+int[][] dirs = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}}  // 分别为下，右，上，左
+    #+end_src
+  - 从左上角第一个元素开始进行遍历，找到所有边界上的1，从边界上的1开始进行广度遍历，同化所有路径上能找到的1变为0，最后再进行一次遍历，找到所有为被同化为0的1的个数
+    #+begin_src java
+int R;  // 区域的宽度, row
+int C;  // 区域的高度，col
+int[][] dirs = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+
+public int numEnclaves(int[][] grid) {
+    R = grid.length;
+    C = grid[0].length;
+    for (int i = 0; i < R; i ++) {
+        for (int j = 0; j < C; j ++) {
+            // 获取到边界第一个值为1的坐标
+            if (isBoard(i, j) && grid[i][j] == 1) {
+                bfs(grid, i, j);
+            }
+        }
+    }
+    // 同化所有符合条件的1后，再次遍历，找到区域内所有1的数量
+    int count = 0;
+    for (int i = 0; i < R; i ++) {
+        for (int j = 0; j < C; j ++) {
+            if (grid[i][j] == 1) {
+                count ++;
+            }
+        }
+    }
+
+    return count;
+}
+
+private void bfs(int[][] A, int row, int col) {
+    // 创建一个队列，存储当前元素的坐标值
+    Queue<int[]> queue = new LinkedList<>();
+    queue.offer(new int[]{row, col});
+    // 将当前元素同化为0
+    A[row][col] = 0;
+    // 从当前元素开始进行上下左右遍历
+    while (!queue.isEmpty()) {
+        // 获取当前坐标
+        int[] curr = queue.poll();
+        // 当前坐标所处row
+        int currRow = curr[0];
+        // 当前坐标所处col
+        int currCol = curr[1];
+        // 根据上下左右路径进行遍历
+        for (int[] dir: dirs) {
+            // 获取下一个坐标
+            int nextRow = currRow + dir[0];
+            int nextCol = currCol + dir[1];
+            // 若不在区域内，跳过
+            if (!inArea(nextRow, nextCol)) {
+                continue;
+            }
+            // 若当前值为1，则将该坐标推入队列中，同时将该值同化为0
+            if (A[row][col] == 1) {
+                queue.offer(new int[]{nextRow, nextCol});
+                A[row][col] = 0;
+            }
+
+        }
+    }
+}
+
+private boolean isBoarder(int row, int col) {
+    // 根据索引位置判断是否是在边界
+    return row == 0 || row == R - 1 || col == 0 || col == C - 1;
+}
+
+private boolean inArea(int row, int col) {
+    // 在区域内部的所有1
+    return row >= 0 && row < R && col >= 0 && col < C;
+}
+    #+end_src
+    
+  
 ** HANGUP [[*https://leetcode.com/problems/all-possible-full-binary-trees/][Leetcode 894: All Possible Full Binary Trees]] :medium:dp:binary_tree:
 ** HANGUP [[https://leetcode.com/problems/number-of-islands/][Leetcode 200: Number of Islands]]                  :medium:union_find:
 ** HANGUP [[https://leetcode.com/problems/shuffle-an-array/][Leetcode 384: Shuffle an Array]]         :medium:fisher_yates_shuffle:
