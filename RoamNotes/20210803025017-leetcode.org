@@ -417,10 +417,10 @@ private boolean inArea(int row, int col) {
 ** HANGUP [[*https://leetcode.com/problems/all-possible-full-binary-trees/][Leetcode 894: All Possible Full Binary Trees]] :medium:dp:binary_tree:
 ** HANGUP [[https://leetcode.com/problems/number-of-islands/][Leetcode 200: Number of Islands]]                  :medium:union_find:
 ** HANGUP [[https://leetcode.com/problems/shuffle-an-array/][Leetcode 384: Shuffle an Array]]         :medium:fisher_yates_shuffle:
-** HANGUP [[https://leetcode.com/problems/count-sub-islands/][Leetcode 1095: Count Sub Islands]]                    :medium:dfs_bfs:
-** HANGUP [[https://leetcode.com/problems/redundant-connection/][Leetcode 684: Redundant Connection]]               :medium:union_find:
-** HANGUP [[https://leetcode.com/problems/push-dominoes/][Leetcode 838: Push Dominoes]]                         :medium:dfs_bfs:
-** HANGUP [[https://leetcode.com/problems/regions-cut-by-slashes/][Leetcode 959: Regions Cut By Slashes]]             :medium:union_find:
+** HANGUP [[https://leetcode.com/problems/count-sub-islands/][Leetcode 1095: Count Sub Islands]] :medium:binary_search:
+** HANGUP [[https://leetcode.com/problems/redundant-connection/][Leetcode 684: Redundant Connection]] :medium:union_find:
+** HANGUP [[https://leetcode.com/problems/push-dominoes/][Leetcode 838: Push Dominoes]] :medium:dfs_bfs:
+** HANGUP [[https://leetcode.com/problems/regions-cut-by-slashes/][Leetcode 959: Regions Cut By Slashes]] :medium:union_find:
 ** HANGUP [[https://leetcode.com/problems/pascals-triangle/][Leetcode 118: Pascal's Triangle]]                            :easy:dp:
 ** HANGUP [[https://leetcode.com/problems/is-subsequence/][Leetcode 392: Is Subsequence]]                               :easy:dp:
 ** HANGUP [[https://leetcode.com/problems/count-sorted-vowel-strings/][Leetcode 1641: Count Sorted Vowel Strings]]      :medium:backtracking:
@@ -440,8 +440,8 @@ private boolean inArea(int row, int col) {
 ** HANGUP [[https://leetcode.com/problems/reverse-nodes-in-k-group/][Leetcode 25: Reverse Nodes in K-Group]]            :medium:linkedlist:
 ** HANGUP [[https://leetcode.com/problems/swim-in-rising-water/][Leetcode 778: Swim in Rising Water]]                   :hard:Dijkstra:
 ** HANGUP Deep in [[id:89ae77a9-b48e-45f8-8f2c-f03dc4bde5b7][Backtracking]]
-** HANGUP [[https://leetcode.com/problems/binary-tree-pruning/][Leetcode 814: Binary Tree Pruning]]                   :medium:dfs_bfs:
-** HANGUP [[https://leetcode.com/problems/word-ladder-ii/][Leetcode 126: Word Ladder II]]                          :hard:dfs_bfs:
+** HANGUP [[https://leetcode.com/problems/binary-tree-pruning/][Leetcode 814: Binary Tree Pruning]] :medium:binary_tree:
+** HANGUP [[https://leetcode.com/problems/word-ladder-ii/][Leetcode 126: Word Ladder II]] :hard:dfs_bfs:
 ** HANGUP [[https://leetcode.com/problems/non-negative-integers-without-consecutive-ones/][Leetcode 600: Non-negative Integers without Consecutive Ones]] :hard:dp:
 ** HANGUP [[https://leetcode.com/problems/3sum-closest/][Leetcode 16: 3Sum Closest]]                      :medium:two_pointers:
 ** HANGUP [[https://leetcode.com/problems/beautiful-array/][Leetcode 932: Beautiful Array]]                         :medium:array:
@@ -461,9 +461,106 @@ private boolean inArea(int row, int col) {
 ** HOLD [[https://leetcode.com/problems/minimum-window-substring/][Leetcode 76: Minimum Window Substring]] :hard:sliding_window:
 ** HOLD [[https://leetcode-cn.com/problems/walls-and-gates][Leetcode 286: Walls and Gates]] :medium:dfs_bfs:
 ** HOLD [[https://leetcode-cn.com/problems/open-the-lock/][Leetcode 752: Open the Lock]] :medium:dfs_bfs:
-** HOLD [[https://leetcode-cn.com/problems/perfect-squares/][Leetcode 279: Perfect Squares]] :medium:dfs_bfs:
+** [[https://leetcode-cn.com/problems/perfect-squares/][Leetcode 279: Perfect Squares]] :medium:dfs_bfs:
+解题思路：
+根据题意，找到返回为n的完全平方数的最少数量，可以看做为最短路径问题
+将每一个完全平方数看做为一个m叉树，每个节点的值都是完全平方数的累加和，即根节点到当前节点的累加，平方和的个数就是遍历到第几层的时候累加的和等于目标值
+因此可以使用BFS进行求解
+#+begin_src java
+Queue<Integer> queue = new LinkedList<>();
+// 第一层为根节点，值为0，先存入队列中
+queue.offer(0);
+// 创建一个Set，记录所有访问过的节点值
+Set<Integer> set = new HashSet<>();
+set.add(0);
+
+// 树的层级，初始化为0
+int level = 0;
+while (!queue.isEmpty()) {
+    // 层数递加
+    level ++;
+    // 每一层的节点数量
+    int size = queue.size();
+    for (int i = 0; i < size; i ++) {
+        // 当前节点的值
+        int curr = queue.poll();
+        // 遍历节点的子节点
+        for (int j = 1; j <= n; j ++) {
+            // 子节点的值
+            int nodeValue = curr + j * j;
+            // 若节点值等于目标值，则直接返回层数
+            if (nodeValue == n) {
+                return level;
+            }
+            // 若节点值大于目标值，则跳出内层循环
+            if (nodeValue > n) {
+                break;
+            }
+            // 若访问过的节点集合中没有该节点值，则推入set中
+            if (!set.contains(nodeValue)) {
+                queue.offer(nodeValue);
+                set.add(nodeValue);
+            }
+        }
+    }
+}
+return level
+#+end_src
 ** HOLD [[https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/][Leetcode 150: Evaluate Reverse Polish Notation]] :medium:stack:
 ** HOLD [[https://leetcode-cn.com/problems/clone-graph/][Leetcode 133: Clone Graph]] :medium:dfs_bfs:
-** HOLD [[https://leetcode-cn.com/problems/target-sum/][Leetcode 494: Target Sum]] :medium:dfs_bfs:
+** HOLD [[https://leetcode-cn.com/problems/target-sum/][Leetcode 494: Target Sum]] :medium:backtracking:
 ** HOLD [[https://leetcode-cn.com/problems/decode-string/][Leetcode 394: Decode String]] :medium:stack:
-** HOLD [[https://leetcode-cn.com/problems/flood-fill/][Leetcode 733: FloodFill]] :easy:dfs_bfs:
+** [[https://leetcode-cn.com/problems/flood-fill/][Leetcode 733: FloodFill]] :easy:dfs_bfs:
+解题思路：
+类似岛屿问题，图片着色，根据题意找到给定坐标对应值，然后将上下左右可移动路径上的所有相同值进行同化操作
+使用BFS进行求解
+#+begin_src java
+// 定义二维数组存储上下左右四个方向上的移动坐标，以及矩阵行数，列数
+int R;
+int C;
+int[][] dirs = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};    // 下，右，上，左
+
+// 主函数
+public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+    // 初始化R与C
+    R = image.length;
+    C = image[0].length;
+    // 如果给定坐标的值与newColor相同，则直接返回image即可
+    int currColor = image[sr][sc];
+    if (currColor == newColor) {
+        return image;
+    } else {
+        // 否则通过bfs进行修改
+        bfs(image, sr, sc, newColor);
+    }
+    // 最后返回image
+    return image;
+}
+
+// bfs
+private void bfs(int[][] image, int row, int col, int newColor) {
+    // 将当前色值存到变量中
+    int currColor = image[row][col];
+    // 创建队列来存储每个遍历元素的坐标值
+    Queue<int[]> queue = new LinkedList<>();
+    // 将当前给定的坐标存入队列
+    queue.offer(new int[]{row, col});
+    // 同时先将给定坐标的色值变为newColor
+    image[row][col] = newColor;
+    // 进行广度优先搜索给定坐标的上下左右相同元素构成的所有路径
+    while (!queue.isEmpty()) {
+        int[] curr = queue.poll();
+        int currRow = curr[0];
+        int currCol = curr[1];
+        for (int[] dir: dirs) {
+            int nextRow = currRow + dir[0];
+            int nextCol = currCol + dir[1];
+            // 若下一个元素等于currColor，则将其坐标推入队列中，同时同化为newColor
+            if (nextRow >= 0 && nextRow < R && nextCol >= 0 && nextCol < C && image[nextRow][nextCol] == currColor) {
+                queue.offer(new int[]{nextRow, nextCol});
+                image[nextRow][nextCol] = newColor;
+            }
+        }
+    }
+}
+#+end_src

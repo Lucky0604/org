@@ -1,8 +1,9 @@
 * TODO Shanbei English words learning :learning:
-SCHEDULED: <2021-08-27 Fri 14:00 +1d>
+SCHEDULED: <2021-08-28 Sat 14:00 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-26 Thu 14:13]
+:LAST_REPEAT: [2021-08-28 Sat 09:55]
 :END:
+- State "KILL"       from "TODO"       [2021-08-28 Sat 09:55]
 - State "DONE"       from "STRT"       [2021-08-26 Thu 14:13]
 - State "DONE"       from "TODO"       [2021-08-25 Wed 14:26]
 - State "DONE"       from "TODO"       [2021-08-25 Wed 10:12]
@@ -39,10 +40,12 @@ CLOCK: [2021-08-03 Tue 09:58]--[2021-08-03 Tue 09:58] =>  0:00
 :END:
 [2021-08-03 Tue 09:58]
 * TODO Finish 1 Leetcode problem :learning:
-SCHEDULED: <2021-08-27 Fri 10:30 +1d>
+SCHEDULED: <2021-08-29 Sun 10:30 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-26 Thu 10:38]
+:LAST_REPEAT: [2021-08-28 Sat 13:03]
 :END:
+- State "DONE"       from "TODO"       [2021-08-28 Sat 13:03]
+- State "DONE"       from "TODO"       [2021-08-28 Sat 09:54]
 - State "DONE"       from "TODO"       [2021-08-26 Thu 10:38]
 - State "DONE"       from "TODO"       [2021-08-25 Wed 13:12]
 - State "DONE"       from "TODO"       [2021-08-24 Tue 11:08]
@@ -85,10 +88,11 @@ CLOCK: [2021-08-03 Tue 10:14]--[2021-08-03 Tue 10:15] =>  0:01
 :END:
 [2021-08-03 Tue 10:14]
 * TODO [[id:cb6871f7-e947-4c60-a04e-244ccaf8b59b][Java Interview Questions]] :learning:
-SCHEDULED: <2021-08-27 Fri 12:00 +1d>
+SCHEDULED: <2021-08-28 Sat 12:00 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-26 Thu 12:06]
+:LAST_REPEAT: [2021-08-28 Sat 09:54]
 :END:
+- State "KILL"       from "TODO"       [2021-08-28 Sat 09:54]
 - State "DONE"       from "STRT"       [2021-08-26 Thu 12:06]
 - State "DONE"       from "STRT"       [2021-08-25 Wed 13:26]
 - State "DONE"       from "STRT"       [2021-08-24 Tue 11:53]
@@ -148,10 +152,11 @@ CLOCK: [2021-08-04 Wed 12:18]--[2021-08-04 Wed 12:19] =>  0:01
 :END:
 [2021-08-04 Wed 12:18]
 * TODO Reading Hadoop definition guide
-SCHEDULED: <2021-08-27 Fri 12:00 +1d>
+SCHEDULED: <2021-08-28 Sat 12:00 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-26 Thu 12:55]
+:LAST_REPEAT: [2021-08-28 Sat 09:55]
 :END:
+- State "KILL"       from "TODO"       [2021-08-28 Sat 09:55]
 - State "DONE"       from "STRT"       [2021-08-26 Thu 12:55]
 - State "KILL"       from "TODO"       [2021-08-26 Thu 10:09]
 - State "DONE"       from "STRT"       [2021-08-24 Tue 12:38]
@@ -212,11 +217,13 @@ SCHEDULED: <2021-08-20 Fri 11:10>
 CLOCK: [2021-08-20 Fri 11:19]--[2021-08-20 Fri 11:24] =>  0:05
 :END:
 
-** STRT Read and learning Leetcode cn data type articles :learning:
-SCHEDULED: <2021-08-27 Fri 10:00 +1d>
+** TODO Read and learning Leetcode cn data type articles :learning:
+SCHEDULED: <2021-08-29 Sun 10:00 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-26 Thu 11:09]
+:LAST_REPEAT: [2021-08-28 Sat 13:03]
 :END:
+- State "DONE"       from "STRT"       [2021-08-28 Sat 13:03]
+- State "DONE"       from "STRT"       [2021-08-28 Sat 09:54]
 - State "DONE"       from "STRT"       [2021-08-26 Thu 11:09]
 - State "DONE"       from "STRT"       [2021-08-25 Wed 13:06]
 - State "DONE"       from "STRT"       [2021-08-24 Tue 11:08]
@@ -227,6 +234,8 @@ SCHEDULED: <2021-08-27 Fri 10:00 +1d>
 - State "DONE"       from "STRT"       [2021-08-19 Thu 11:20]
 - State "DONE"       from "STRT"       [2021-08-18 Wed 12:14]
 :LOGBOOK:
+CLOCK: [2021-08-28 Sat 10:43]--[2021-08-28 Sat 11:08] =>  0:25
+CLOCK: [2021-08-28 Sat 10:13]--[2021-08-28 Sat 10:38] =>  0:25
 CLOCK: [2021-08-27 Fri 11:10]--[2021-08-27 Fri 11:35] =>  0:25
 CLOCK: [2021-08-27 Fri 10:02]--[2021-08-27 Fri 10:27] =>  0:25
 CLOCK: [2021-08-26 Thu 10:48]--[2021-08-26 Thu 11:09] =>  0:21
@@ -268,10 +277,11 @@ CLOCK: [2021-08-12 Thu 16:20]--[2021-08-12 Thu 16:45] =>  0:25
 SCHEDULED: <2021-08-12 Thu 13:00>
 
 ** TODO Read a technique article and write some notes :learning:
-SCHEDULED: <2021-08-27 Fri 14:20 +1d>
+SCHEDULED: <2021-08-28 Sat 14:20 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-08-27 Fri 10:01]
+:LAST_REPEAT: [2021-08-28 Sat 09:55]
 :END:
+- State "KILL"       from "TODO"       [2021-08-28 Sat 09:55]
 - State "KILL"       from "TODO"       [2021-08-27 Fri 10:01]
 - State "KILL"       from "TODO"       [2021-08-26 Thu 10:09]
 - State "KILL"       from "TODO"       [2021-08-25 Wed 10:13]
