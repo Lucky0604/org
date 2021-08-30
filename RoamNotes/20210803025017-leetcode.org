@@ -450,7 +450,35 @@ private boolean inArea(int row, int col) {
 ** HANGUP [[https://leetcode.com/problems/making-a-large-island/][Leetcode 827: Making A Large Island]]                        :hard:dp:
 ** HANGUP [[https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors/][Leetcode 1884: Egg Drop With 2 Eggs and N Floors]]         :medium:dp:
 ** HANGUP [[https://leetcode.com/problems/subsets-ii][Leetcode 90: Subsets II]]                        :medium:backtracking:
-** HANGUP [[https://leetcode.com/problems/path-sum-ii/][Leetcode 113: Path Sum II]]                           :medium:dfs_bfs:
+** [[https://leetcode.com/problems/path-sum-ii/][Leetcode 113: Path Sum II]] :medium:dfs_bfs:
+解题思路：
+本质上是DFS + backtracking
+通过DFS查找符合条件的路径，通过backtracking记录路径节点值
+#+begin_src java
+List<List<Integer>> ret = new ArrayList<>();
+// 利用Queue来存储路径上的节点值
+Deque<Integer> queue = new LinkedList<>();
+
+public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+    dfs(root, targetSum);
+    return ret;
+}
+
+private void dfs(TreeNode root, int targetSum) {
+    if (root == null) return;
+    // 将根节点推入队列中
+    queue.offerLast(root.val);
+    // 动态修改targetSum的值
+    targetSum -= root.val;
+    if (root.left == null && root.right == null && targetSum == 0) {
+        ret.add(new LinkedList(queue));
+    }
+    dfs(root.left, targetSum);
+    dfs(root.right, targetSum);
+    // 因为回溯，所以需要将访问过的不合适的节点poll掉
+    queue.pollLast();
+}
+#+end_src
 ** HANGUP [[https://leetcode.com/problems/rank-transform-of-a-matrix/][Leetcode 1632: Rank Transform of a Matrix]]           :hard:union_find:
 ** HANGUP [[https://leetcode.com/problems/number-of-good-ways-to-split-a-string/][Leetcode 1525: Number of Good Ways to Split a String]] :medium:sliding_window:
 ** HANGUP [[https://leetcode.com/problems/add-strings/][Leetcode 415: Add Strings]]                              :easy:string:
@@ -601,3 +629,4 @@ private void bfs(int[][] image, int row, int col, int newColor) {
     }
 }
 #+end_src
+** HOLD [[https://leetcode-cn.com/problems/random-pick-with-weight/][Leetcode 528: Random Pick with Weight]] :medium:binary_search:

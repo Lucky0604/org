@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       7b594da8-9b73-4521-8b7f-c33a620faa24
+:END:
+#+title: JVM知识点汇总
+* JVM知识点汇总
+[[./imgs/pictures/HsJXU8S4oVtCTM7.png]]
