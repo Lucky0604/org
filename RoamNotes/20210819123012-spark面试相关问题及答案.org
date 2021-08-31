@@ -26,3 +26,8 @@
 - 谈谈 你对spark中宽窄依赖的认识
 
   RDD 和它依赖的父 RDD（s）的关系有两种不同的类型，即窄依赖（narrow dependency）和宽依赖（wide dependency）。宽依赖指的是多个子 RDD 的 Partition 会依赖同一个父 RDD 的 Partition窄依赖：指的是每一个父 RDD 的 Partition 最多被子 RDD 的一个 Partition使用
+- 数据偏移
+  [[面试必问&数据倾斜 - echoy的文章 - 知乎https://zhuanlan.zhihu.com/p/64240857]]
+  [[30分钟掌握 Hive SQL 优化（解决数据倾斜） - 钟家福的文章 - 知乎https://zhuanlan.zhihu.com/p/320515172]]
+- Spark RDD & DataFrame
+  [[RDD、DataFrame和Dataset 怎么选择才好？ - binso18502020560的文章 - 知乎https://zhuanlan.zhihu.com/p/35440915]]

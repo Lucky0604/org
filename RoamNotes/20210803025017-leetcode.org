@@ -487,7 +487,52 @@ private void dfs(TreeNode root, int targetSum) {
 ** HOLD [[https://leetcode.com/problems/group-anagrams/][Leetcode 49: Group Anagrams]] :medium:hashmap:
 ** HOLD [[https://leetcode.com/problems/remove-boxes/][Leetcode 546: Remove Boxes]] :hard:dp:
 ** HOLD [[https://leetcode.com/problems/minimum-window-substring/][Leetcode 76: Minimum Window Substring]] :hard:sliding_window:
-** HOLD [[https://leetcode-cn.com/problems/walls-and-gates][Leetcode 286: Walls and Gates]] :medium:dfs_bfs:
+** [[https://leetcode-cn.com/problems/walls-and-gates][Leetcode 286: Walls and Gates]] :medium:dfs_bfs:
+解题思路：
+根据题意
+- -1代表墙
+- 0代表门
+- INF代表空房间，在Java中用Integer.MAX_VALUE表示
+可以通过BFS，通过每一个门来找空房间，由于BFS保证在搜索距离为d+1位置时，前面距离d的位置都已经搜索过，因此到达每一个空房间的距离都是最短距离。
+#+begin_src java
+int EMPTY = Integer.MAX_VALUE;
+int GATE = 0;
+int[][] dirs = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+
+public void wallsAndGates(int[][] rooms) {
+    int R = rooms.length;
+    int C = rooms[0].length;
+    // 使用队列存储空房间的坐标
+    Queue<int[]> queue = new LinkedList<>();
+    for (int i = 0; i < R; i ++) {
+        for (int j = 0; j < C; j ++) {
+            // 当前位置为GATE时，将坐标二维数组推入队列
+            if (rooms[i][j] == GATE) {
+                queue.add(new int[]{i, j});
+            }
+        }
+    }
+    while (!queue.isEmpty) {
+        // 遍历取出所有GATE的坐标数组
+        int[] curr = queue.poll();
+        int currRow = curr[0];
+        int currCol = curr[1];
+        for (int[] dir: dirs) {
+            // 根据路径得到下一个坐标值
+            int nextRow = currRow + dir[0];
+            int nextCol = currCol + dir[1];
+            // 当超出边界，或当前不是空房间时，继续执行
+            if (nextRow < 0 || nextRow >= R || nextCol < 0 || nextCol >= C || rooms[nextRow][nextCol] != EMPTY) {
+                continue;
+            }
+            // 当下一个空房间路径为当前值 +1
+            rooms[nextRow][nextCol] = rooms[currRow][currCol] + 1;
+            // 同时将该坐标推入队列
+            queue.add(new int[]{nextRow, nextCol});
+        }
+    }
+}
+#+end_src
 ** [[https://leetcode-cn.com/problems/sum-of-all-odd-length-subarrays/][Leetcode 1588: Sum of all Odd Length Subarrays]] :dfs_bfs:easy:
 Solution:
 - two pointer and recurse the whole array
@@ -526,6 +571,7 @@ private void sum(int[] arr, int i, int j) {
 }
 #+end_src
 ** HOLD [[https://leetcode-cn.com/problems/open-the-lock/][Leetcode 752: Open the Lock]] :medium:dfs_bfs:
+
 ** [[https://leetcode-cn.com/problems/perfect-squares/][Leetcode 279: Perfect Squares]] :medium:dfs_bfs:
 解题思路：
 根据题意，找到返回为n的完全平方数的最少数量，可以看做为最短路径问题
