@@ -676,3 +676,4 @@ private void bfs(int[][] image, int row, int col, int newColor) {
 }
 #+end_src
 ** HOLD [[https://leetcode-cn.com/problems/random-pick-with-weight/][Leetcode 528: Random Pick with Weight]] :medium:binary_search:
+** HOLD [[https://leetcode-cn.com/problems/compare-version-numbers/][Leetcode 165: Compare Version Numbers]] :medium:two_pointers:
