@@ -47,10 +47,11 @@ CLOCK: [2021-08-03 Tue 09:58]--[2021-08-03 Tue 09:58] =>  0:00
 :END:
 [2021-08-03 Tue 09:58]
 * TODO Finish 1 Leetcode problem :learning:
-SCHEDULED: <2021-09-04 Sat 10:30 +1d>
+SCHEDULED: <2021-09-05 Sun 10:30 +1d>
 :PROPERTIES:
-:LAST_REPEAT: [2021-09-03 Fri 23:10]
+:LAST_REPEAT: [2021-09-04 Sat 23:12]
 :END:
+- State "DONE"       from "TODO"       [2021-09-04 Sat 23:12]
 - State "DONE"       from "TODO"       [2021-09-03 Fri 23:10]
 - State "DONE"       from "TODO"       [2021-09-02 Thu 19:05]
 - State "DONE"       from "TODO"       [2021-09-01 Wed 23:04]
